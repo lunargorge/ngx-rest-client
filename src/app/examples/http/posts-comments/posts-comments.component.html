@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-3 pt-2">
+        <button type="button" class="btn btn-secondary btn-sm mr-1" [ngClass]="{'text-info': postId === 1}"(click)="setPostId(1)">postId: 1</button>
+        <button type="button" class="btn btn-secondary btn-sm mr-1" [ngClass]="{'text-info': postId === 2}"(click)="setPostId(2)">postId: 2</button>
+    </div>
+    <div class="col-12 mt-1">
+        <ul *ngIf="!postComments.isEmpty()" class="list-group">
+            <li *ngFor="let comment of postComments.items()" class="list-group-item">
+                postId: {{ comment.postId }}<br>
+                id: {{ comment.id }}<br>
+                name: {{ comment.name }}<br>
+                email: {{ comment.email }}
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<app-loader [loading]="loading"></app-loader>
+
+<app-messenger [message]="message"></app-messenger>
+
+<!-- LISTING -->
+<div class="row">
+    <div class="col-3 pt-2">
+        Rows: <button type="button" class="btn btn-secondary btn-sm mr-1" [ngClass]="{'text-info': rowsLimit === 5}" (click)="changeRowsLimit(5)">5</button>
+              <button type="button" class="btn btn-secondary btn-sm mr-1" [ngClass]="{'text-info': rowsLimit === 10}"(click)="changeRowsLimit(10)">10</button>
+              <button type="button" class="btn btn-secondary btn-sm mr-1" [ngClass]="{'text-info': rowsLimit === 20}"(click)="changeRowsLimit(20)">20</button>
+    </div>
+    <div class="col-9">
+        <input type="text" (keyup)="setSearchPhrase($event)" class="form-control" id="search"
+                                 aria-describedby="search" placeholder="Full text search">
+    </div>
+    <div class="col-12 mt-1">
+        <ul *ngIf="!posts.isEmpty()" class="list-group">
+            <li class="list-group-item">
+                <span class="mr-2">Id</span>
+                <b (click)="sortByTitle()" style="cursor:pointer">Title</b>
+                <span *ngIf="titleSortOrder === 'asc'">-</span>
+                <span *ngIf="titleSortOrder === 'desc'">+</span>
+            </li>
+            <li *ngFor="let post of posts.items()" class="list-group-item">
+                <span class="mr-2">{{ post.id }}.</span>
+                <span *ngIf="partialEditionId !== post.id">{{ post.title }}</span>
+                <span *ngIf="partialEditionId === post.id">
+                    <input type="text" class="form-control" [(ngModel)]="post.title">
+                </span>
+                <span class="ml-auto p-2">
+                    <button *ngIf="partialEditionId !== post.id"
+                            type="button" class="btn btn-secondary btn-sm mr-1" (click)="editPostTitle(post.id)">edit title</button>
+                    <button *ngIf="partialEditionId === post.id"
+                            type="button" class="btn btn-success btn-sm mr-1" (click)="modifyPostTitle(post)">save title</button>
+                    <button type="button" class="btn btn-secondary btn-sm mr-1" (click)="editPost(post.id)">edit full</button>
+                    <button type="button" class="btn btn-secondary btn-sm mr-1" (click)="deletePost(post.id)">delete</button>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="mt-1">
+    <div class="d-flex justify-content-center">
+        <ul class="pagination">
+            <li class="page-item" *ngFor="let pageItem of arrayOfPages;"><a class="page-link" (click)="changePage(pageItem)">
+                <span [ngClass]="{'text-info': pageItem === page}">{{ pageItem }}</span>
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- FORM -->
+
+<button type="button" class="btn btn-success" (click)="newPost()">Add new post</button>
+
+<div class="row" *ngIf="post">
+    <div class="col-12">
+        <form>
+            <div class="form-group">
+                <label for="userId">User ID</label>
+                <input type="text" class="form-control" id="userId" name="userId" aria-describedby="userId"
+                       [(ngModel)]="post.userId"
+                       placeholder="User ID">
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" aria-describedby="title"
+                       [(ngModel)]="post.title"
+                       placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="body">Body</label>
+                <input type="text" class="form-control" id="body" name="body" aria-describedby="body"
+                       [(ngModel)]="post.body"
+                       placeholder="Body">
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary" (click)="hideForm()">Close</button>
+                <button type="button" class="btn btn-success" (click)="savePost()">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
