@@ -1,6 +1,11 @@
+
 <app-loader [loading]="loading"></app-loader>
 
 <app-messenger [message]="message"></app-messenger>
+
+<p>
+    I suggest you press F12 and go to the network tab.
+</p>
 
 <!-- LISTING -->
 <div class="row">
@@ -37,6 +42,12 @@
                 </span>
             </li>
         </ul>
+
+        <ul *ngIf="posts.isEmpty()" class="list-group">
+            <li class="list-group-item">
+                No result.
+            </li>
+        </ul>
     </div>
 </div>
 
@@ -54,7 +65,7 @@
 
 <button type="button" class="btn btn-success" (click)="newPost()">Add new post</button>
 
-<div class="row" *ngIf="post">
+<div class="row mt-3" *ngIf="post">
     <div class="col-12">
         <form>
             <div class="form-group">
@@ -82,3 +93,5 @@
         </form>
     </div>
 </div>
+
+<app-post-doc></app-post-doc>

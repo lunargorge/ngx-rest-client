@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 
@@ -17,6 +18,7 @@ import { SortOrderType } from '../../../../library/http/query-criteria/criteria/
     styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+
     public posts: ArrayCollection<PostEntity> = new ArrayCollection<any>();
     public post: PostEntity = null;
     public message: string;
@@ -47,6 +49,41 @@ export class PostsComponent implements OnInit {
         });
     }
 
+    public editPost(id: string | number): void {
+        this.loading = true;
+        this.postService.fetchById(id).subscribe((res: PostEntity) => {
+            this.post = res;
+            this.partialEditionId = null;
+            this.loading = false;
+        });
+    }
+
+    public savePost(): void {
+        this.loading = true;
+        this.postService.save(this.post).subscribe((res: PostEntity) => {
+            this.post = null;
+            this.showMessage('Saved post, id: ' + res.id);
+            this.loadPosts();
+        });
+    }
+
+    public modifyPostTitle(post: PostEntity): void {
+        this.loading = true;
+        this.postService.modify(post.id, {title: post.title}).subscribe((res: PostEntity) => {
+            this.showMessage('Modified title in post, id: ' + post.id);
+            this.loadPosts();
+        });
+    }
+
+    public deletePost(id: string | number): void {
+        this.loading = true;
+        this.postService.delete(id).subscribe(() => {
+            this.showMessage('Removed post, id: ' + id);
+            this.changePage(1);
+            this.loadPosts();
+        });
+    }
+
     public changePage(val: number): void {
         this.page = val;
         this.loadPosts();
@@ -73,24 +110,6 @@ export class PostsComponent implements OnInit {
         this.hideForm();
     }
 
-    public editPost(id: string | number): void {
-        this.loading = true;
-        this.postService.fetchById(id).subscribe((res: PostEntity) => {
-            this.post = res;
-            this.partialEditionId = null;
-            this.loading = false;
-        });
-    }
-
-    public deletePost(id: string | number): void {
-        this.loading = true;
-        this.postService.delete(id).subscribe(() => {
-            this.showMessage('Removed post, id: ' + id);
-            this.changePage(1);
-            this.loadPosts();
-        });
-    }
-
     public newPost(): void {
         this.post = new PostEntity();
         this.partialEditionId = null;
@@ -98,24 +117,6 @@ export class PostsComponent implements OnInit {
 
     public hideForm(): void {
         this.post = null;
-    }
-
-    public savePost(): void {
-        this.loading = true;
-        this.postService.save(this.post).subscribe((res: PostEntity) => {
-            this.post = null;
-            this.showMessage('Saved post, id: ' + res.id);
-            this.loadPosts();
-        });
-    }
-
-    // example PATCH request
-    public modifyPostTitle(post: PostEntity): void {
-        this.loading = true;
-        this.postService.modify(post.id, {title: post.title}).subscribe((res: PostEntity) => {
-            this.showMessage('Modified title in post, id: ' + post.id);
-            this.loadPosts();
-        });
     }
 
     protected showMessage(val: string): void {

@@ -1,0 +1,43 @@
+<div class="row mt-4">
+  <div class="col-12">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#postsComponentTs" role="tab">posts.component.ts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#postsComponentHtml" role="tab">posts.component.html</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#postEntityTs" role="tab">post.entity.ts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#postRepositoryTs" role="tab">post.repository.ts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#postServiceTs" role="tab">post.service.ts</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="postsComponentTs" role="tabpanel">
+        <handy-syntax-highlighter [language]="'typescript'" [content]="postsComponentTs"></handy-syntax-highlighter>
+      </div>
+      <div class="tab-pane" id="postsComponentHtml" role="tabpanel">
+        <handy-syntax-highlighter [language]="'html'" [content]="postsComponentHtml"></handy-syntax-highlighter>
+      </div>
+      <div class="tab-pane" id="postEntityTs" role="tabpanel">
+        <handy-syntax-highlighter [language]="'typescript'" [content]="postEntityTs"></handy-syntax-highlighter>
+      </div>
+
+      <div class="tab-pane" id="postRepositoryTs" role="tabpanel">
+        <handy-syntax-highlighter [language]="'typescript'" [content]="postRepositoryTs"></handy-syntax-highlighter>
+      </div>
+
+      <div class="tab-pane" id="postServiceTs" role="tabpanel">
+        <handy-syntax-highlighter [language]="'typescript'" [content]="postServiceTs"></handy-syntax-highlighter>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { HttpClientComponent } from './http-client.component';
 import { DocComponent } from './doc/doc.component';
 import { SharedModule } from '../shared/shared.module';
 import { Ng2HandySyntaxHighlighterModule } from 'ng2-handy-syntax-highlighter';
+import { PostDocComponent } from './posts/post-doc/post-doc.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,7 @@ import { Ng2HandySyntaxHighlighterModule } from 'ng2-handy-syntax-highlighter';
         Ng2HandySyntaxHighlighterModule,
         SharedModule
     ],
-    declarations: [PostsComponent, PostsCommentsComponent, HttpClientComponent, DocComponent]
+    declarations: [PostsComponent, PostDocComponent, PostsCommentsComponent, HttpClientComponent, DocComponent, PostDocComponent]
 })
 export class HttpClientModule {
 }
