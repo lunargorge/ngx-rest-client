@@ -1,3 +1,4 @@
+
 import { Property } from 'handy-data';
 
 export class PostCommentEntity {

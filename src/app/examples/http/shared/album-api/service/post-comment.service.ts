@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 
 import { HttpService } from '../../../../../../library'; // 'ngx-rest-client'
@@ -6,7 +7,7 @@ import { PostCommentRepository } from '../repository/post-comment.repository';
 import { PostCommentEntity } from '../entity/post-comment.entity';
 import { HttpEvent, HttpResponse } from '@angular/common/http';
 import { ArrayCollection } from 'handy-data';
-import { IQueryCriteria } from '../../../../../../library/http/query-criteria/query-criteria.interface';
+import { IQueryCriteria } from '../../../../../../library/http/query/query-criteria.interface';
 import { IHttpRequestOptions } from '../../../../../../library/http/http-request-options.interface';
 import { Observable } from 'rxjs/Observable';
 
@@ -24,7 +25,7 @@ export class PostCommentService extends HttpService<PostCommentRepository, PostC
         return this;
     }
 
-    public fetchById(id: number | string, options: IHttpRequestOptions = {}):
+    public fetchById(id: number | string, queryCriteria: ArrayCollection<IQueryCriteria> = null, options: IHttpRequestOptions = {}):
     Observable<PostCommentEntity | HttpResponse<PostCommentEntity> | HttpEvent<PostCommentEntity>> {
         throw Error('To get by ID nested resources (by default one level, add custom routes for more)');
     }

@@ -10,17 +10,51 @@
         <div class="col-sm-2 bd-sidebar">
             <nav>
                 <span>
-                  <a [routerLink]=" ['/'] ">
-                    Home
-                  </a>
+                    <a [routerLink]=" ['/'] ">Home</a>
                 </span>
                 <hr>
                 <span>
-                  <a [routerLink]=" ['/posts'] ">posts</a>
+                    <strong>Examples</strong>
                 </span>
                 <hr>
                 <span>
-                  <a [routerLink]=" ['/posts-comments'] ">posts-comments</a>
+                    <a [routerLink]=" ['/posts'] " class="pl-4">Posts</a>
+                </span>
+                <hr>
+                <span>
+                    <a [routerLink]=" ['/posts-comments'] " class="pl-4">Posts-comments</a>
+                </span>
+                <hr>
+                <span>
+                    <strong>QueryCriteria</strong>
+                </span>
+                <hr>
+                <span>
+                    <a [routerLink]=" ['/query-criteria'] " fragment="filter" class="pl-4">Filter</a>
+                </span>
+                <hr>
+                <span>
+                    <a [routerLink]=" ['/query-criteria'] " fragment="paginate" class="pl-4">Paginate</a>
+                </span>
+                <hr>
+                <span>
+                    <a [routerLink]=" ['/query-criteria'] " fragment="sort" class="pl-4">Sort</a>
+                </span>
+                <hr>
+                <span>
+                    <a [routerLink]=" ['/query-criteria'] " fragment="slice" class="pl-4">Slice</a>
+                </span>
+                <hr>
+                <span>
+                    <a [routerLink]=" ['/query-criteria'] " fragment="operators" class="pl-4">Operators</a>
+                </span>
+                <hr>
+                <span>
+                    <a [routerLink]=" ['/query-criteria'] " fragment="full-text-search" class="pl-4">Full text search</a>
+                </span>
+                <hr>
+                <span>
+                    <a [routerLink]=" ['/query-criteria'] " fragment="relationships" class="pl-4">Relationships</a>
                 </span>
             </nav>
         </div>

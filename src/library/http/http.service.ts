@@ -4,19 +4,19 @@ import { Observable } from 'rxjs/Observable';
 import { ArrayCollection } from 'handy-data'; // 'ngx-rest-client'
 
 import { HttpRepository } from './http.repository';
-import { IQueryCriteria } from './query-criteria/query-criteria.interface';
+import { IQueryCriteria } from './query/query-criteria.interface';
 import { IHttpRequestOptions } from './http-request-options.interface';
 
 export abstract class HttpService<R extends HttpRepository<E>, E> {
 
     constructor(protected repository: R) {}
 
-    public fetchById(id: number | string, options: IHttpRequestOptions = {}):
+    public fetchById(id: number | string, queryCriteria: ArrayCollection<IQueryCriteria> = null, options: IHttpRequestOptions = {}):
             Observable<E | HttpResponse<E> | HttpEvent<E>> {
-        return this.repository.fetchById(id, options);
+        return this.repository.fetchById(id, queryCriteria, options);
     }
 
-    public fetch(queryCriteria?: ArrayCollection<IQueryCriteria>, options: IHttpRequestOptions = {}):
+    public fetch(queryCriteria: ArrayCollection<IQueryCriteria> = null, options: IHttpRequestOptions = {}):
             Observable<ArrayCollection<E> | HttpResponse<ArrayCollection<E>> | HttpEvent<ArrayCollection<E>>> {
         return this.repository.fetch(queryCriteria, options);
     }

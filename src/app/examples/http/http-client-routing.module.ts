@@ -5,6 +5,7 @@ import { HttpClientComponent } from './http-client.component';
 import { DocComponent } from './doc/doc.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostsCommentsComponent } from './posts-comments/posts-comments.component';
+import { QueryCriteriaComponent } from './query-criteria/query-criteria.component';
 
 const routes: Routes = [
     {
@@ -19,6 +20,10 @@ const routes: Routes = [
             {
                 path: 'doc',
                 component: DocComponent
+            },
+            {
+                path: 'query-criteria',
+                component: QueryCriteriaComponent
             },
             {
                 path: 'posts',

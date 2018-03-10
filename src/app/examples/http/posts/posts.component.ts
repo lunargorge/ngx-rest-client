@@ -3,14 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 
 import { ArrayCollection } from 'handy-data';
-import { IQueryCriteria, QueryCriteriaPaginate, QueryCriteriaFullTextSearch} from '../../../../library'; // 'ngx-rest-client'
+import {
+    IQueryCriteria, QueryCriteriaPaginate, QueryCriteriaFullTextSearch, QueryCriteriaSort, SortOrderType
+} from '../../../../library'; // 'ngx-rest-client'
 
 import { PostService } from '../shared/album-api/service/post.service';
 import { PostEntity } from '../shared/album-api/entity/post.entity';
-import { QueryCriteriaSort } from '../../../../library/http/query-criteria/criteria';
-import { SortOrderType } from '../../../../library/http/query-criteria/criteria/sort';
-
-// https://github.com/typicode/json-server
 
 @Component({
     selector: 'app-posts',
@@ -21,15 +19,15 @@ export class PostsComponent implements OnInit {
 
     public posts: ArrayCollection<PostEntity> = new ArrayCollection<any>();
     public post: PostEntity = null;
+    public editRowId: number;
+    public searchPhrase: string;
+    public page = 1;
+    public rowsLimit = 5;
+    public titleSortOrder: SortOrderType;
+
+    public arrayOfPages = [];
     public message: string;
     public loading = false;
-    // listing
-    public partialEditionId: number;
-    public searchPhrase: string;
-    public arrayOfPages = [];
-    protected page = 1;
-    protected rowsLimit = 5;
-    protected titleSortOrder: SortOrderType;
 
     constructor(private postService: PostService) {
     }
@@ -38,9 +36,10 @@ export class PostsComponent implements OnInit {
         this.loadPosts();
     }
 
+    // http GET
     public loadPosts(): void {
         this.post = null;
-        this.partialEditionId = null;
+        this.editRowId = null;
         this.loading = true;
         this.postService.fetch(this.getCriteria(), {observe: 'response'}).subscribe((res: HttpResponse<ArrayCollection<PostEntity>>) => {
             this.createArrayPages(parseInt(res.headers.get('X-Total-Count'), 10));
@@ -49,38 +48,42 @@ export class PostsComponent implements OnInit {
         });
     }
 
+    // http GET by ID
     public editPost(id: string | number): void {
         this.loading = true;
         this.postService.fetchById(id).subscribe((res: PostEntity) => {
             this.post = res;
-            this.partialEditionId = null;
+            this.editRowId = null;
             this.loading = false;
         });
     }
 
+    // http POST or PUT - depending on whether there is an ID
     public savePost(): void {
         this.loading = true;
         this.postService.save(this.post).subscribe((res: PostEntity) => {
             this.post = null;
-            this.showMessage('Saved post, id: ' + res.id);
+            this.showMessage('Post has been saved, id: ' + res.id);
             this.loadPosts();
         });
     }
 
+    // http PATCH
     public modifyPostTitle(post: PostEntity): void {
         this.loading = true;
         this.postService.modify(post.id, {title: post.title}).subscribe((res: PostEntity) => {
-            this.showMessage('Modified title in post, id: ' + post.id);
+            this.showMessage('The title in the post has been modified, id: ' + post.id);
             this.loadPosts();
         });
     }
 
+    // http DELETE
     public deletePost(id: string | number): void {
         this.loading = true;
         this.postService.delete(id).subscribe(() => {
-            this.showMessage('Removed post, id: ' + id);
+            this.showMessage('Post was removed, id: ' + id);
             this.changePage(1);
-            this.loadPosts();
+            // this.loadPosts();
         });
     }
 
@@ -92,7 +95,7 @@ export class PostsComponent implements OnInit {
     public changeRowsLimit(val: number): void {
         this.rowsLimit = val;
         this.changePage(1);
-        this.loadPosts();
+        // this.loadPosts();
     }
 
     public setSearchPhrase(event: any): void {
@@ -106,13 +109,13 @@ export class PostsComponent implements OnInit {
     }
 
     public editPostTitle(id: number): void {
-        this.partialEditionId = id;
+        this.editRowId = id;
         this.hideForm();
     }
 
     public newPost(): void {
         this.post = new PostEntity();
-        this.partialEditionId = null;
+        this.editRowId = null;
     }
 
     public hideForm(): void {

@@ -4,11 +4,15 @@
 <app-messenger [message]="message"></app-messenger>
 
 <p>
+    The following component presents the basic operations: GET, POST, PUT, PATCH, DELETE.
+</p>
+
+<p>
     I suggest you press F12 and go to the network tab.
 </p>
 
 <!-- LISTING -->
-<div class="row">
+<div class="row pt-3">
     <div class="col-3 pt-2">
         Rows: <button type="button" class="btn btn-secondary btn-sm mr-1" [ngClass]="{'text-info': rowsLimit === 5}" (click)="changeRowsLimit(5)">5</button>
               <button type="button" class="btn btn-secondary btn-sm mr-1" [ngClass]="{'text-info': rowsLimit === 10}"(click)="changeRowsLimit(10)">10</button>
@@ -28,14 +32,14 @@
             </li>
             <li *ngFor="let post of posts.items()" class="list-group-item">
                 <span class="mr-2">{{ post.id }}.</span>
-                <span *ngIf="partialEditionId !== post.id">{{ post.title }}</span>
-                <span *ngIf="partialEditionId === post.id">
+                <span *ngIf="editRowId !== post.id">{{ post.title }}</span>
+                <span *ngIf="editRowId === post.id">
                     <input type="text" class="form-control" [(ngModel)]="post.title">
                 </span>
                 <span class="ml-auto p-2">
-                    <button *ngIf="partialEditionId !== post.id"
+                    <button *ngIf="editRowId !== post.id"
                             type="button" class="btn btn-secondary btn-sm mr-1" (click)="editPostTitle(post.id)">edit title</button>
-                    <button *ngIf="partialEditionId === post.id"
+                    <button *ngIf="editRowId === post.id"
                             type="button" class="btn btn-success btn-sm mr-1" (click)="modifyPostTitle(post)">save title</button>
                     <button type="button" class="btn btn-secondary btn-sm mr-1" (click)="editPost(post.id)">edit full</button>
                     <button type="button" class="btn btn-secondary btn-sm mr-1" (click)="deletePost(post.id)">delete</button>

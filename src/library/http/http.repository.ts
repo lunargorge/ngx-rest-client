@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { ArrayCollection, Entity2ObjectLiteral, ObjectLiteral2Entity } from 'handy-data'; // 'ngx-rest-client'
-import { IQueryCriteria } from './query-criteria/query-criteria.interface';
+import { IQueryCriteria } from './query/query-criteria.interface';
 import { IHttpRequestOptions } from './http-request-options.interface';
 
 // https://angular.io/api/common/http/HttpClient
@@ -27,17 +27,17 @@ export abstract class HttpRepository<E> {
         this.urlApi = urlApi;
     }
 
-    public fetchById(id: number | string, options: IHttpRequestOptions = {}):
+    public fetchById(id: number | string, queryCriteria: ArrayCollection<IQueryCriteria> = null, options: IHttpRequestOptions = {}):
             Observable<E | HttpResponse<E> | HttpEvent<E>> {
         const isObserve = (options.hasOwnProperty('observe')) ? true : false;
-        return this.httpClient.request('GET', this.getUrl(id), this.prepareOptions(options)).map(res => {
+        return this.httpClient.request('GET', this.getUrl(id, queryCriteria), this.prepareOptions(options)).map(res => {
             return (!isObserve)
                 ? <E>this.prepareEntity(res)
                 : res.clone({body: <E>this.prepareEntity(res.body)});
         });
     }
 
-    public fetch(queryCriteria?: ArrayCollection<IQueryCriteria>, options: IHttpRequestOptions = {}):
+    public fetch(queryCriteria: ArrayCollection<IQueryCriteria> = null, options: IHttpRequestOptions = {}):
             Observable<ArrayCollection<E> | HttpResponse<ArrayCollection<E>> | HttpEvent<ArrayCollection<E>>> {
         const isObserve = (options.hasOwnProperty('observe')) ? true : false;
         return this.httpClient

@@ -1,14 +1,36 @@
-<div class="card-container">
-  Biblioteka mająca ułatwić korzystanie z json-server w aplikacjach opartych o framework Angular.<br />
-  ngx-rest-client korzysta z <a href="https://www.npmjs.com/package/handy-data" target="_blanc">handy-data</a> do tworzenia encji
-  reprezentujących dane.
-</div>
+<p>
+  Library to facilitate the use of <a href="https://github.com/typicode/json-server" target="_blanc">json-server</a>
+  in applications based on the Angular framework.<br />
+  ngx-rest-client uses  <a href="https://www.npmjs.com/package/handy-data" target="_blanc">handy-data</a> to
+  create entities that represent data.
+</p>
 
-<h3 class="sample-content mt-2">
+<p class="mt-2">
+  Of course, the library can easily be adapted to cooperate with other <strong>production</strong> rest services.
+</p>
+
+<h3 class="sample-content pt-2">
   Installation
 </h3>
 
 In terminal:
 <handy-syntax-highlighter [language]="'bash'"
-                          [content]="'npm install ngx-rest-client --save'"
+                          [content]="'$ npm install ngx-rest-client --save'"
+></handy-syntax-highlighter>
+
+<h3 class="sample-content pt-3">
+  Demo
+</h3>
+
+We use <a href="http://jsonplaceholder.typicode.com/" target="_blanc">jsonplaceholder</a> REST API on this site.
+
+<p>
+  Note: POST, PUT, PATCH, DELETE - the resource will not be really updated on the server but it will be faked as if.<br>
+  (more: <a href="https://github.com/typicode/jsonplaceholder#how-to" target="_blanc">how-to</a>)
+</p>
+
+<span class="text-info">If you want to check how the POST, PUT, PATCH, DELETE operations work, run the demo locally.</span>
+
+<handy-syntax-highlighter [language]="'bash'"
+                          [content]="demoRunBash"
 ></handy-syntax-highlighter>

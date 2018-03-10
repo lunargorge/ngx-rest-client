@@ -10,6 +10,8 @@ import { DocComponent } from './doc/doc.component';
 import { SharedModule } from '../shared/shared.module';
 import { Ng2HandySyntaxHighlighterModule } from 'ng2-handy-syntax-highlighter';
 import { PostDocComponent } from './posts/post-doc/post-doc.component';
+import { QueryCriteriaComponent } from './query-criteria/query-criteria.component';
+import { PostsCommentsDocComponent } from './posts-comments/posts-comments-doc/posts-comments-doc.component';
 
 @NgModule({
     imports: [
@@ -19,7 +21,16 @@ import { PostDocComponent } from './posts/post-doc/post-doc.component';
         Ng2HandySyntaxHighlighterModule,
         SharedModule
     ],
-    declarations: [PostsComponent, PostDocComponent, PostsCommentsComponent, HttpClientComponent, DocComponent, PostDocComponent]
+    declarations: [
+        PostsComponent,
+        PostDocComponent,
+        PostsCommentsComponent,
+        HttpClientComponent,
+        DocComponent,
+        PostDocComponent,
+        QueryCriteriaComponent,
+        PostsCommentsDocComponent
+    ]
 })
 export class HttpClientModule {
 }
