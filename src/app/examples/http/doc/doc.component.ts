@@ -1,5 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 
+let usageTs = `
+    @Injectable()
+    export class PostRepository extends HttpRepository<PostEntity> {
+        protected resourceUri = 'posts';
+    
+        constructor(httpClient: HttpClient, targetEntity: PostEntity) {
+            super(httpClient, targetEntity, environment.apis.album);
+        }
+    }
+    
+    @Injectable()
+    export class PostService extends HttpService<PostRepository, PostEntity> {
+        constructor(repository: PostRepository) {
+            super(repository);
+        }
+    }
+    
+    export class AnyComponent implements OnInit {
+        public posts: ArrayCollection<PostEntity> = new ArrayCollection<any>();
+    
+        constructor(private postService: PostService) {
+        }
+        
+        ngOnInit() {
+            this.postService.fetch().subscribe((res: ArrayCollection<PostEntity>) => {
+                this.posts = res;// do something ...
+            });
+            
+            // if you need access to headers e.g. X-Total-Count, use the option: {observe: 'response'}
+            let criteria = new ArrayCollection<IQueryCriteria>();
+            criteria.add(new QueryCriteriaSlice({start: 20, end: 30}));
+            this.postService.fetch(criteria, {observe: 'response'}).subscribe((res: HttpResponse<ArrayCollection<PostEntity>>) => {
+              // res.headers.get('X-Total-Count'); // do something ..
+              this.posts = res.body;
+          });
+        }
+    }
+`;
+
 let demoRunBash = `
  // open terminal tab
  $ npm install -g json-server
@@ -14,7 +53,7 @@ let demoRunBash = `
  $ npm run start
  
  // go to http://localhost:4200
- // all operations (POST, PUT, PATCH, DELETE) will work
+ // all operations (GET, POST, PUT, PATCH, DELETE) will work
 `;
 
 @Component({
@@ -24,6 +63,7 @@ let demoRunBash = `
 })
 export class DocComponent implements OnInit {
   public demoRunBash = demoRunBash;
+  public usageTs = usageTs;
   constructor() { }
 
   ngOnInit() {

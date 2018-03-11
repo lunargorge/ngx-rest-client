@@ -19,6 +19,29 @@ In terminal:
 ></handy-syntax-highlighter>
 
 <h3 class="sample-content pt-3">
+  Usage
+</h3>
+
+All you have to do is create a service class and repository for the given enpoint.
+Then you can use methods:
+<ul>
+  <li>fetchById(),</li>
+  <li>fetch(),</li>
+  <li>save() (or create(), update()),</li>
+  <li>modify(),</li>
+  <li>delete(),</li>
+  <li>exist(). </li>
+</ul>
+If you need access to headers, use the option: &#123;observe: 'response'&#125;.
+<p>
+  You should also read about <a href="https://angular.io/api/common/http/HttpClient" target="_blanc">HttpClient</a>,
+  and take a look <a [routerLink]=" ['/posts'] ">Example -> Posts</a>.
+</p>
+<handy-syntax-highlighter [language]="'typescript'"
+                          [content]="usageTs"
+></handy-syntax-highlighter>
+
+<h3 class="sample-content pt-3">
   Demo
 </h3>
 
