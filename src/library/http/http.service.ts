@@ -1,7 +1,7 @@
 import { HttpEvent, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { ArrayCollection } from 'handy-data'; // 'ngx-rest-client'
+import { ArrayCollection } from 'handy-data';
 
 import { HttpRepository } from './http.repository';
 import { IQueryCriteria } from './query/query-criteria.interface';

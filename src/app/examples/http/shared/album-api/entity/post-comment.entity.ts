@@ -1,6 +1,8 @@
 
+import { Injectable } from '@angular/core';
 import { Property } from 'handy-data';
 
+@Injectable()
 export class PostCommentEntity {
     @Property('id')
     protected _id: number;

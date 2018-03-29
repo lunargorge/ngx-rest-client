@@ -8,7 +8,7 @@ import { PostsCommentsComponent } from './posts-comments/posts-comments.componen
 import { HttpClientComponent } from './http-client.component';
 import { DocComponent } from './doc/doc.component';
 import { SharedModule } from '../shared/shared.module';
-import { Ng2HandySyntaxHighlighterModule } from 'ng2-handy-syntax-highlighter';
+import { Ng2HandySyntaxHighlighterModule } from '@lunargorge/ng2-handy-syntax-highlighter';
 import { PostDocComponent } from './posts/post-doc/post-doc.component';
 import { QueryCriteriaComponent } from './query-criteria/query-criteria.component';
 import { PostsCommentsDocComponent } from './posts-comments/posts-comments-doc/posts-comments-doc.component';

@@ -1,6 +1,5 @@
 
 import { Component, OnInit } from '@angular/core';
-
 import { ArrayCollection } from 'handy-data';
 
 import { PostCommentEntity } from '../shared/album-api/entity/post-comment.entity';

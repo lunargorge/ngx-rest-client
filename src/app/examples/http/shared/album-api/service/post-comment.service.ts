@@ -1,15 +1,16 @@
 
 import { Injectable } from '@angular/core';
-
-import { HttpService } from '../../../../../../library'; // 'ngx-rest-client'
-
-import { PostCommentRepository } from '../repository/post-comment.repository';
-import { PostCommentEntity } from '../entity/post-comment.entity';
 import { HttpEvent, HttpResponse } from '@angular/common/http';
-import { ArrayCollection } from 'handy-data';
-import { IQueryCriteria } from '../../../../../../library/http/query/query-criteria.interface';
-import { IHttpRequestOptions } from '../../../../../../library/http/http-request-options.interface';
 import { Observable } from 'rxjs/Observable';
+import { ArrayCollection } from 'handy-data';
+
+import { PostCommentRepository } from './../repository/post-comment.repository';
+import { PostCommentEntity } from './../entity/post-comment.entity';
+
+// 'ngx-rest-client'
+import { IQueryCriteria } from './../../../../../../library/http/query/query-criteria.interface';
+import { IHttpRequestOptions } from './../../../../../../library/http/http-request-options.interface';
+import { HttpService } from './../../../../../../library/http/http.service';
 
 @Injectable()
 export class PostCommentService extends HttpService<PostCommentRepository, PostCommentEntity> {

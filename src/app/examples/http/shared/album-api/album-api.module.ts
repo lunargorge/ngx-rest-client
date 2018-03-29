@@ -1,12 +1,14 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostService } from './service/post.service';
 import { HttpClientModule } from '@angular/common/http';
-import { PostRepository } from './repository/post.repository';
-import { PostEntity } from './entity/post.entity';
+
+import { PostService } from './service/post.service';
 import { PostCommentService } from './service/post-comment.service';
+import { PostRepository } from './repository/post.repository';
 import { PostCommentRepository } from './repository/post-comment.repository';
 import { PostCommentEntity } from './entity/post-comment.entity';
+import { PostEntity } from './entity/post.entity';
 
 @NgModule({
     imports: [
@@ -15,8 +17,7 @@ import { PostCommentEntity } from './entity/post-comment.entity';
     ],
     providers: [
         PostService, PostRepository, PostEntity,
-        PostCommentService, PostCommentRepository,
-        PostCommentEntity
+        PostCommentService, PostCommentRepository, PostCommentEntity
     ],
     declarations: []
 })

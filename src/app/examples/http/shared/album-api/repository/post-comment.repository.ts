@@ -2,10 +2,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { HttpRepository } from '../../../../../../library'; // 'ngx-rest-client'
+import { PostCommentEntity } from './../entity/post-comment.entity';
+import { environment } from './../../../../../../environments/environment';
 
-import { PostCommentEntity } from '../entity/post-comment.entity';
-import { environment } from '../../../../../../environments/environment';
+// 'ngx-rest-client'
+import { HttpRepository } from '../../../../../../library/http/http.repository';
 
 @Injectable()
 export class PostCommentRepository extends HttpRepository<PostCommentEntity> {

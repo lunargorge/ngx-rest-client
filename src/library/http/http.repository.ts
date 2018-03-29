@@ -2,16 +2,9 @@ import { HttpClient, HttpEvent, HttpHeaders, HttpResponse } from '@angular/commo
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { ArrayCollection, Entity2ObjectLiteral, ObjectLiteral2Entity } from 'handy-data'; // 'ngx-rest-client'
+import { ArrayCollection, Entity2ObjectLiteral, ObjectLiteral2Entity } from 'handy-data';
 import { IQueryCriteria } from './query/query-criteria.interface';
 import { IHttpRequestOptions } from './http-request-options.interface';
-
-// https://angular.io/api/common/http/HttpClient
-// https://blog.hackages.io/angular-http-httpclient-same-but-different-86a50bbcc450
-// https://medium.com/@ryanchenkie_40935/angular-authentication-using-the-http-client-and-http-interceptors-2f9d1540eb8
-
-// https://github.com/adnan-kamili/rest-api-response-format
-// http://www.restapitutorial.com/lessons/httpmethods.html
 
 export abstract class HttpRepository<E> {
     protected resourceUri: string;

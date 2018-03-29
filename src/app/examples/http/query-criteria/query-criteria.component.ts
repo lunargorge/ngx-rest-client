@@ -1,15 +1,6 @@
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { ArrayCollection } from 'handy-data';
-import { IQueryCriteria, QueryCriteriaFullTextSearch, QueryCriteriaPaginate, QueryCriteriaSort } from '../../../../library';
-import { IFiltersOption, QueryCriteriaFilter } from '../../../../library/http/query/criteria/filter';
-import { PostEntity } from '../shared/album-api/entity/post.entity';
-import { HttpResponse } from '@angular/common/http';
-import { QueryCriteriaSlice } from '../../../../library/http/query/criteria/slice';
-import { IOperatorOption, QueryCriteriaOperator } from '../../../../library/http/query/criteria/operator';
-import { QueryCriteriaRelationshipEmbed } from '../../../../library/http/query/criteria/relationship-embed';
-import { QueryCriteriaRelationshipExpand } from '../../../../library/http/query/criteria/relationship-expand';
 
 const filterTs = `
     let criteria = new ArrayCollection<IQueryCriteria>();
@@ -105,26 +96,30 @@ const relationshipsTs = `
 `;
 
 @Component({
-  selector: 'app-query-criteria',
-  templateUrl: './query-criteria.component.html',
-  styleUrls: ['./query-criteria.component.css'],
-    providers: [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+    selector: 'app-query-criteria',
+    templateUrl: './query-criteria.component.html',
+    styleUrls: ['./query-criteria.component.css'],
+    // silent ERROR !!!
+    // providers: [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
 export class QueryCriteriaComponent implements OnInit, AfterViewChecked {
-  public filterTs = filterTs;
-  public paginateTs = paginateTs;
-  public sortTs = sortTs;
-  public sliceTs = sliceTs;
-  public operatorsTs = operatorsTs;
-  public fullTextSearchTs = fullTextSearchTs;
-  public relationshipsTs = relationshipsTs;
-  private fragment: string;
+    public filterTs = filterTs;
+    public paginateTs = paginateTs;
+    public sortTs = sortTs;
+    public sliceTs = sliceTs;
+    public operatorsTs = operatorsTs;
+    public fullTextSearchTs = fullTextSearchTs;
+    public relationshipsTs = relationshipsTs;
+    private fragment: string;
 
-  constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute) {
+    }
 
-  ngOnInit() {
-      this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
-  }
+    ngOnInit() {
+        this.route.fragment.subscribe(fragment => {
+            this.fragment = fragment;
+        });
+    }
 
     ngAfterViewChecked(): void {
         try {

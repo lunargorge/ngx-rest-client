@@ -3,12 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 
 import { ArrayCollection } from 'handy-data';
-import {
-    IQueryCriteria, QueryCriteriaPaginate, QueryCriteriaFullTextSearch, QueryCriteriaSort, SortOrderType
-} from '../../../../library'; // 'ngx-rest-client'
 
 import { PostService } from '../shared/album-api/service/post.service';
 import { PostEntity } from '../shared/album-api/entity/post.entity';
+
+// 'ngx-rest-client'
+import { QueryCriteriaSort, SortOrderType } from '../../../../library/http/query/criteria/sort';
+import { IQueryCriteria } from '../../../../library/http/query/query-criteria.interface';
+import { QueryCriteriaPaginate } from '../../../../library/http/query/criteria/paginate';
+import { QueryCriteriaFullTextSearch } from '../../../../library/http/query/criteria/full-text-search';
 
 @Component({
     selector: 'app-posts',
