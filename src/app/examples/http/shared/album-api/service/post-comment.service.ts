@@ -18,7 +18,8 @@ export class PostCommentService extends HttpService<PostCommentRepository, PostC
         super(repository);
     }
 
-    public setParentResourceParams(postId: string | number) {
+    // the name of the method can be any !!!
+    public setPostId(postId: string | number) {
         postId = postId + '';
         const uri = this.repository.getResourceUri().replace(/{POST_ID}/, postId);
         this.repository.updateNestedResourceUri(uri);
