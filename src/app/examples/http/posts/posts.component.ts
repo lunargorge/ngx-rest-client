@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 
-import { ArrayCollection } from 'handy-data';
+import { ArrayCollection } from 'json2entity';
 
 import { PostService } from '../shared/album-api/service/post.service';
 import { PostEntity } from '../shared/album-api/entity/post.entity';

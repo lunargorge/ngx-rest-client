@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { ArrayCollection } from 'handy-data';
+import { ArrayCollection } from 'json2entity';
 
 import { PostCommentRepository } from './../repository/post-comment.repository';
 import { PostCommentEntity } from './../entity/post-comment.entity';

@@ -1,6 +1,6 @@
 import { IQueryCriteria } from '../query-criteria.interface';
 import { QueryCriteriaType } from '../query-criteria-type';
-import { ArrayCollection } from 'handy-data';
+import { ArrayCollection } from 'json2entity';
 
 export type OperatorType = 'gte' | 'lte' | 'ne' | 'like';
 

@@ -2,7 +2,7 @@ import { HttpClient, HttpEvent, HttpHeaders, HttpResponse } from '@angular/commo
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { ArrayCollection, Entity2ObjectLiteral, ObjectLiteral2Entity } from 'handy-data';
+import { ArrayCollection, Entity2Json, Json2Entity } from 'json2entity';
 import { IQueryCriteria } from './query/query-criteria.interface';
 import { IHttpRequestOptions } from './http-request-options.interface';
 
@@ -50,7 +50,7 @@ export abstract class HttpRepository<E> {
 
     public create(entity: E, options: IHttpRequestOptions = {}):
             Observable<E | HttpResponse<E> | HttpEvent<E>> {
-        options['body'] = (new Entity2ObjectLiteral()).process(entity);
+        options['body'] = (new Entity2Json()).process(entity, true);
         return this.httpClient.request('POST', this.getUrl(), options).map(res => {
             return <E>this.prepareEntity(res);
         });
@@ -58,7 +58,7 @@ export abstract class HttpRepository<E> {
 
     public update(entity: E, options: IHttpRequestOptions = {}):
             Observable<E | HttpResponse<E> | HttpEvent<E>> {
-        options['body'] = (new Entity2ObjectLiteral()).process(entity);
+        options['body'] = (new Entity2Json()).process(entity, true);
         return this.httpClient.request('PUT', this.getUrl(entity[this.resourceKeyId]), options).map(res => {
             return <E>this.prepareEntity(res);
         });
@@ -91,7 +91,7 @@ export abstract class HttpRepository<E> {
     }
 
     protected prepareEntity(jsonData: any): any {
-        return (new ObjectLiteral2Entity()).process(jsonData, this.targetEntity);
+        return (new Json2Entity()).process(jsonData, this.targetEntity);
     }
 
     protected getUrl(id: string | number = null, queryCriteria?: ArrayCollection<IQueryCriteria>): string {

@@ -7,7 +7,7 @@ Of course, the library can easily be adapted to cooperate with other production 
 
 Installation: 
 
-$ npm install handy-data --save  
+$ npm install json2entity --save  
 $ npm install ngx-rest-client --save
 
 [Live demo](http://restclient.diamondtower.pl/)
