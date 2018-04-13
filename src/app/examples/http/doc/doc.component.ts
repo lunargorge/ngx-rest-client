@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 const installTs = `
-$ npm install handy-data --save
+$ npm install json2entity --save
 $ npm install ngx-rest-client --save
 `;
 
