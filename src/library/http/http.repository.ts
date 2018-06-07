@@ -50,7 +50,7 @@ export abstract class HttpRepository<E> {
 
     public create(entity: E, options: IHttpRequestOptions = {}):
             Observable<E | HttpResponse<E> | HttpEvent<E>> {
-        options['body'] = (new Entity2Json()).process(entity, true);
+        options['body'] = (new Entity2Json()).process(entity);
         return this.httpClient.request('POST', this.getUrl(), options).map(res => {
             return <E>this.prepareEntity(res);
         });
@@ -58,7 +58,7 @@ export abstract class HttpRepository<E> {
 
     public update(entity: E, options: IHttpRequestOptions = {}):
             Observable<E | HttpResponse<E> | HttpEvent<E>> {
-        options['body'] = (new Entity2Json()).process(entity, true);
+        options['body'] = (new Entity2Json()).process(entity);
         return this.httpClient.request('PUT', this.getUrl(entity[this.resourceKeyId]), options).map(res => {
             return <E>this.prepareEntity(res);
         });

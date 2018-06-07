@@ -1,22 +1,22 @@
 
 import { Injectable } from '@angular/core';
-import { Property } from 'json2entity';
+import { Serializer } from 'json2entity';
 
 @Injectable()
 export class PostCommentEntity {
-    @Property('id')
+    @Serializer()
     public id: number;
 
-    @Property('postId')
+    @Serializer()
     public postId: number;
 
-    @Property('name')
+    @Serializer()
     public name: string;
 
-    @Property('email')
+    @Serializer()
     public email: string;
 
-    @Property('body')
+    @Serializer()
     protected _body: string;
 
     get body(): string {

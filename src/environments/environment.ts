@@ -6,7 +6,7 @@
 export const environment = {
     production: false,
     apis: {
-        // album: 'http://jsonplaceholder.typicode.com'
-        album: 'http://localhost:3000'
+        album: 'http://jsonplaceholder.typicode.com'
+        // album: 'http://localhost:3000'
     }
 };
