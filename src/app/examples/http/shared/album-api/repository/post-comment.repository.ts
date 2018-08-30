@@ -15,4 +15,10 @@ export class PostCommentRepository extends HttpRepository<PostCommentEntity> {
     constructor(httpClient: HttpClient, targetEntity: PostCommentEntity) {
         super(httpClient, targetEntity, environment.apis.album);
     }
+
+    public setUriParams(postId: string | number) {
+        postId = postId + '';
+        const uri = this.getResourceUri().replace(/{POST_ID}/, postId);
+        this.updateNestedResourceUri(uri);
+    }
 }

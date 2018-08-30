@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ArrayCollection } from 'json2entity';
 
 import { PostCommentRepository } from './../repository/post-comment.repository';
@@ -18,12 +18,9 @@ export class PostCommentService extends HttpService<PostCommentRepository, PostC
         super(repository);
     }
 
-    // the name of the method can be any !!!
-    public setPostId(postId: string | number) {
-        postId = postId + '';
-        const uri = this.repository.getResourceUri().replace(/{POST_ID}/, postId);
-        this.repository.updateNestedResourceUri(uri);
-
+    // the name of the method can be any !!
+    public setUriParams(postId: string | number) {
+        this.repository.setUriParams(postId);
         return this;
     }
 

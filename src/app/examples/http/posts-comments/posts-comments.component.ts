@@ -22,7 +22,7 @@ export class PostsCommentsComponent implements OnInit {
     }
 
     public loadPostComments(): void {
-        this.postCommentService.setPostId(this.postId).fetch()
+        this.postCommentService.setUriParams(this.postId).fetch()
             .subscribe((res: ArrayCollection<PostCommentEntity>) => {
                 this.postComments = res;
             });
