@@ -9,11 +9,12 @@
   },
   "description": "Library to facilitate the use of json-server in applications based on the Angular framework.",
   "keywords": [
-    "json server",
-    "json-server",
-    "rest",
     "rest client",
-    "angular6",
+    "rest api",
+    "rest",
+    "api",
+    "json server",
+    "angular",
     "typescript"
   ],
   "author": "Lunar Gorge <lunargorge@gmail.com>",
