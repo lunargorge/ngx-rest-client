@@ -6,6 +6,11 @@ import { ArrayCollection, Entity2Json, Json2Entity } from 'json2entity';
 import { IQueryCriteria } from './query/query-criteria.interface';
 import { IHttpRequestOptions } from './http-request-options.interface';
 
+// https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html
+export type TPartialEntity<T> = {
+    [P in keyof T]?: T[P];
+};
+
 export abstract class HttpRepository<E> {
     protected resourceUri: string;
     protected resourceNestedUri: string;
@@ -67,7 +72,7 @@ export abstract class HttpRepository<E> {
             }));
     }
 
-    public modify(id: string | number, data: any, options: IHttpRequestOptions = {}):
+    public modify(id: string | number, data: TPartialEntity<E>, options: IHttpRequestOptions = {}):
             Observable<E | HttpResponse<E> | HttpEvent<E>> {
         options['body'] = data;
         return this.httpClient.request('PATCH', this.getUrl(id), options)
@@ -82,7 +87,7 @@ export abstract class HttpRepository<E> {
     }
 
     public exist(id: number | string = null, options: IHttpRequestOptions = {}):
-            Observable<any> { // ?????
+            Observable<any> {
         return this.httpClient.request('HEAD', this.getUrl(id), options);
     }
 

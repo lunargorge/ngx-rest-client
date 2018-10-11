@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { ArrayCollection } from 'json2entity';
 
-import { HttpRepository } from './http.repository';
+import { HttpRepository, TPartialEntity } from './http.repository';
 import { IQueryCriteria } from './query/query-criteria.interface';
 import { IHttpRequestOptions } from './http-request-options.interface';
 
@@ -36,7 +36,7 @@ export abstract class HttpService<R extends HttpRepository<E>, E> {
         return this.repository.update(entity, options);
     }
 
-    public modify(id: string | number, entity, options: IHttpRequestOptions = {}):
+    public modify(id: string | number, entity: TPartialEntity<E>, options: IHttpRequestOptions = {}):
             Observable<E | HttpResponse<E> | HttpEvent<E>> {
         return this.repository.modify(id, entity, options);
     }

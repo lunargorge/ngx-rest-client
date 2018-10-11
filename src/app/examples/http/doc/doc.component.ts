@@ -7,6 +7,21 @@ $ npm install ngx-rest-client --save
 
 const usageTs = `
     @Injectable()
+    export class PostEntity {
+        @Serializer()
+        public id: number;
+    
+        @Serializer()
+        public userId: number;
+    
+        @Serializer()
+        public title: string;
+    
+        @Serializer()
+        public body: string;
+    }
+
+    @Injectable()
     export class PostRepository extends HttpRepository<PostEntity> {
         protected resourceUri = 'posts';
 
