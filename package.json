@@ -1,6 +1,6 @@
 {
   "name": "ngx-rest-client",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
   "ngPackage": {
     "lib": {

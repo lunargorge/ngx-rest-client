@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 const postsCommentsComponentTs: string = require('!!raw-loader?lang=typescript!./../posts-comments.component.ts');
 const postsCommentsComponentHtml: string = require('!!raw-loader?lang=typescript!./../posts-comments.component.html');
 const postCommentEntityTs: string = require('!!raw-loader?lang=typescript!./../../shared/album-api/entity/post-comment.entity.ts');
-const postCommentRepositoryTs: string = require('!!raw-loader?lang=typescript!./../../shared/album-api/repository/post-comment.repository.ts');
 const postCommentServiceTs: string = require('!!raw-loader?lang=typescript!./../../shared/album-api/service/post-comment.service.ts');
 
 @Component({
@@ -17,7 +16,6 @@ export class PostsCommentsDocComponent implements OnInit {
     public postsCommentsComponentTs = postsCommentsComponentTs;
     public postsCommentsComponentHtml = postsCommentsComponentHtml;
     public postCommentEntityTs = postCommentEntityTs;
-    public postCommentRepositoryTs = postCommentRepositoryTs;
     public postCommentServiceTs = postCommentServiceTs;
 
     constructor() {

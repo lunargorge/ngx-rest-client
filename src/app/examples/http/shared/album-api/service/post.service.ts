@@ -1,15 +1,18 @@
 
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { PostRepository } from './../repository/post.repository';
 import { PostEntity } from './../entity/post.entity';
+import { environment } from './../../../../../../environments/environment';
 
 // 'ngx-rest-client'
-import { HttpService } from './../../../../../../library/http/http.service';
+import { ApiService } from '../../../../../../library/http/api.service';
 
 @Injectable()
-export class PostService extends HttpService<PostRepository, PostEntity> {
-    constructor(repository: PostRepository) {
-        super(repository);
+export class PostService extends ApiService<PostEntity> {
+    protected resourceUri = 'posts';
+
+    constructor(httpClient: HttpClient, targetEntity: PostEntity) {
+        super(httpClient, targetEntity, environment.apis.album);
     }
 }

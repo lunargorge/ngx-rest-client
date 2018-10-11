@@ -1,5 +1,4 @@
-export * from './library/http/http.repository';
-export * from './library/http/http.service';
+export * from './library/http/api.service';
 export * from './library/http/http-request-options.interface';
 
 export * from './library/http/query/criteria/filter';

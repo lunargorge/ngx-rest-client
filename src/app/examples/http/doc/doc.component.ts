@@ -22,18 +22,11 @@ const usageTs = `
     }
 
     @Injectable()
-    export class PostRepository extends HttpRepository<PostEntity> {
+    export class PostService extends ApiService<PostEntity> {
         protected resourceUri = 'posts';
-
+    
         constructor(httpClient: HttpClient, targetEntity: PostEntity) {
             super(httpClient, targetEntity, environment.apis.album);
-        }
-    }
-
-    @Injectable()
-    export class PostService extends HttpService<PostRepository, PostEntity> {
-        constructor(repository: PostRepository) {
-            super(repository);
         }
     }
 

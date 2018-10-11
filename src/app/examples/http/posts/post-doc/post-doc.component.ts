@@ -5,7 +5,6 @@ const albumApiModuleTs: string = require('!!raw-loader?lang=typescript!./../../s
 const postsComponentTs: string = require('!!raw-loader?lang=typescript!./../posts.component.ts');
 const postsComponentHtml: string = require('!!raw-loader?lang=typescript!./../posts.component.html');
 const postEntityTs: string = require('!!raw-loader?lang=typescript!./../../shared/album-api/entity/post.entity.ts');
-const postRepositoryTs: string = require('!!raw-loader?lang=typescript!./../../shared/album-api/repository/post.repository.ts');
 const postServiceTs: string = require('!!raw-loader?lang=typescript!./../../shared/album-api/service/post.service.ts');
 
 @Component({
@@ -18,7 +17,6 @@ export class PostDocComponent implements OnInit {
     public postsComponentTs = postsComponentTs;
     public postsComponentHtml = postsComponentHtml;
     public postEntityTs = postEntityTs;
-    public postRepositoryTs = postRepositoryTs;
     public postServiceTs = postServiceTs;
 
     constructor() {

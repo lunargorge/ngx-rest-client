@@ -86,7 +86,6 @@ export class PostsComponent implements OnInit {
         this.postService.delete(id).subscribe(() => {
             this.showMessage('Post was removed, id: ' + id);
             this.changePage(1);
-            // this.loadPosts();
         });
     }
 
@@ -98,7 +97,6 @@ export class PostsComponent implements OnInit {
     public changeRowsLimit(val: number): void {
         this.rowsLimit = val;
         this.changePage(1);
-        // this.loadPosts();
     }
 
     public setSearchPhrase(event: any): void {

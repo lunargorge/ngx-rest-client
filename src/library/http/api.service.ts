@@ -11,7 +11,7 @@ export type TPartialEntity<T> = {
     [P in keyof T]?: T[P];
 };
 
-export abstract class HttpRepository<E> {
+export abstract class ApiService<E> {
     protected resourceUri: string;
     protected resourceNestedUri: string;
     protected resourceKeyId = 'id';
